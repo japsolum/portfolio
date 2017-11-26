@@ -1,11 +1,25 @@
 body {
-	background-image: url("C:/Users/JapSo/github/portfolio/images/background.svg");
-	background-size: 100%;
+	background: url("C:/Users/JapSo/github/portfolio/images/background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 	color: white;
 }
 
-.border {
-	border: solid 2px white;
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+	cursor: pointer;
+	color: #159ab1;
+}
+
+p {
+	font-size: 20px;
 }
 
 .alignLeft {
@@ -26,20 +40,31 @@ body {
 
 .popout {
 	background-color: rgba(0, 0, 0, 0.8);
+	border: double 3px #6f6f71;
+
 }
 
 .header {
 	margin-top: 5px;
 	position: relative;
 	padding: 10px;
+	text-shadow: 3px 3px 6px #159ab1;
+}
+
+.navMenu {
+	border-top: none;
+	transition: 1s;
 }
 
 .menuBtn {
 	font-size: 40px;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	visibility: hidden;
+	transform: translateY(20px);
+}
+
+.menuBtn:hover {
+	cursor: pointer;
+	color: #159ab1;
+	text-shadow: 3px 3px 6px white;
 }
 
 .name {
@@ -51,14 +76,19 @@ body {
 	font-style: italic;	
 }
 
+.border {
+	border: solid 1px green;
+}
+
 .button {
 	padding: 5px;
+	text-align: center;
 }
 
 .button:hover {
 	background-color: rgba(0, 0, 0, 1);
 	cursor: pointer;
-	color: cyan;
+	color: #159ab1;
 }
 
 .contentWindow {
@@ -70,4 +100,41 @@ body {
 .carousel-inner img {
   margin: auto;
   max-height: 430px;
+}
+
+.contactIcon {
+	height: 40px;
+	width: 40px;
+	margin: 20px;
+	border-radius: 100px;
+}
+
+.contactTitle {
+	font-size: 20px;
+	text-decoration: underline;
+}
+
+.contactURL {
+	font-size: 15px;
+	font-style: italic;
+}
+
+@media only screen and (max-width : 767px) {
+    /* only size 'xs' and below */
+    .navMenu {
+    	display: block;
+    }
+
+    .button {
+    	font-size: 25px;
+    	text-align: left;
+    	margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width : 480px) {
+    /* only size 'xs' and below */
+    .contentWindow {
+        min-height: 400px;
+    }
 }
