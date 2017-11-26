@@ -1,0 +1,98 @@
+.splashPage {
+	height: 100vh;
+	width: 100%;
+	left: 0px;
+	z-index: 99;
+	position: absolute;
+	background-color: black;
+	color: white;
+}
+
+.exit {
+	text-align: right;
+	margin: 10px;
+}
+
+.exit:hover {
+	color: #159ab1;
+	cursor: pointer;
+}
+
+.enter {
+	font-size: 40px;
+	width: 25%;
+	margin: auto;
+	margin-top: 30px;
+	border: solid 2px white;
+	border-radius: 25px;
+}
+
+.enter:hover {
+	color: #159ab1;
+	border: solid 2px #159ab1;
+	cursor: pointer;
+}
+
+.splash {
+	font-size: 80px;
+	text-align: center;
+}
+
+.splashFirstName {
+	animation: slideDown 2s forwards linear 1 reverse, 
+			makeVisible 1s .5s both linear,
+			addShadow 1s 4s forwards linear;
+
+}
+
+.splashLastName {
+	animation: slideUp 2s 2s forwards linear 1 reverse, 
+			makeVisible 1s 2.5s both linear,
+			addShadow 1.5s 4s forwards linear;
+
+}
+
+.splashSubtitle {
+	text-align: center;
+	font-size: 25px;
+	transform: translateY(125px);
+	animation: makeVisible 1.5s 4s both linear;
+}
+
+@keyframes slideDown {
+	from{
+		transform: translateY(150px);
+	}
+	to{
+		transform: translateY(0px);
+	}
+}
+
+@keyframes slideUp {
+	from{
+		transform: translateY(125px);
+	}
+	to{
+		transform: translateY(400px);
+	}
+}
+
+@keyframes makeVisible {
+	from{
+		opacity: 0;
+		display: none;
+	}
+	to{
+		opacity: 1;
+		display: block;
+	}
+}
+
+@keyframes addShadow {
+	from{
+		text-shadow: 0px 0px 0px #159ab1;
+	}
+	to{
+		text-shadow: 3px 3px 6px #159ab1;
+	}
+}
