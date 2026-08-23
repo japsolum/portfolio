@@ -1,112 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>James Solum's Portfolio</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="styles/styles.css">
-	<link rel="stylesheet" type="text/css" href="styles/splashpage.css">
+	<title>James Solum — Web Developer</title>
+	<meta name="description" content="Portfolio of James Solum, a web developer building clean, functional interfaces. Browse projects, read about my path into development, and get in touch.">
+	<meta name="theme-color" content="#0b0f14">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="James Solum — Web Developer">
+	<meta property="og:description" content="Portfolio of James Solum, a web developer building clean, functional interfaces.">
+	<meta property="og:image" content="images/og-image.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+	<link rel="canonical" href="https://japsolum.github.io/portfolio/">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-	<div class = "splashPage">
-		<div class = "exit"> X </div>
-		<div>
-			<div class="splash splashFirstName">James</div> 
-			<div class = "splash splashLastName">Solum</div>
-			<div class = "splashSubtitle"><i> UX/UI Web Designer </i></div>
-			<div class = "splashSubtitle enter"> ENTER </div>
+
+	<a class="skip-link" href="#main">Skip to main content</a>
+
+	<header class="site-header">
+		<div class="wrap header-inner">
+			<a class="brand" href="#top">JS<span class="brand-dot">.</span></a>
+
+			<nav class="nav" aria-label="Primary">
+				<button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">
+					<span class="sr-only">Menu</span>
+					<span class="nav-toggle-bar"></span>
+				</button>
+				<ul class="nav-list" id="navList">
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="apps/resume/index.html">Resume</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<li><a class="nav-cta" href="https://github.com/japsolum" target="_blank" rel="noopener">GitHub</a></li>
+				</ul>
+			</nav>
 		</div>
-	</div>
-	<div class = "container">
-		<div class = "row header popout">
-			<div class = "col-xs-2 hidden-sm hidden-md hidden-lg menuBtn">
-				<span class="glyphicon glyphicon-menu-hamburger align-text-bottom"></span>
+	</header>
+
+	<main id="main">
+
+		<section class="hero" id="top">
+			<div class="wrap hero-inner">
+				<p class="eyebrow">Web Developer</p>
+				<h1>James Solum</h1>
+				<p class="hero-lede">I build clean, functional interfaces — from front-end UI experiments to small full-stack tools. This site is a running log of what I've made and what I'm learning next.</p>
+				<div class="hero-actions">
+					<a class="btn btn-primary" href="#projects">View projects</a>
+					<a class="btn btn-ghost" href="apps/resume/index.html">View resume</a>
+					<a class="btn btn-ghost" href="#contact">Get in touch</a>
+				</div>
 			</div>
-			<div class = "hidden-xs col-sm-7">
+		</section>
 
-			</div>
-			<div class = "col-xs-10 col-sm-5 alignRight">
-				<span class = "name">James Solum</span><br>
-				<span class = "title">UX/UI Web Developer</span>
-			</div>
-		</div>
+		<section class="section" id="projects">
+			<div class="wrap">
+				<h2 class="section-title">Projects</h2>
+				<p class="section-lede">A selection of apps and interface experiments. Every one of them runs right here on this site — no downloads, no redirects.</p>
 
-		<div class = "row navMenu popout hidden-xs">
-			<div class = "col-sm-2 button" id = "projects"> Projects </div>
-			<div class = "col-sm-2 button"><a href = "C:/Users/JapSo/github/projectResume/index.html" target = "_blank"> Resume </a></div>
-			<div class = "col-sm-2 button" id = "about"> About Me </div>
-			<div class = "col-sm-2 button" id = "contact"> Contact Me </div>
-		</div>
+				<div class="project-grid">
 
-		<div class = "row">
-			<div class = "hideen-xs col-sm-1"></div>
-			<div class = "col-xs-12 col-sm-10 contentWindow popout">
+					<article class="project-card">
+						<a class="project-thumb" href="apps/neighborhood-map/index.html">
+							<img src="images/neighborhoodMap.jpg" alt="Screenshot of the Neighborhood Map app, showing a map with location markers and a searchable sidebar list." loading="lazy" width="640" height="422">
+						</a>
+						<div class="project-body">
+							<h3><a href="apps/neighborhood-map/index.html">Neighborhood Map</a></h3>
+							<p>An interactive map of nearby places with a filterable list, hover-synced markers, and drag-to-pan. Runs on a hand-rolled Web Mercator map engine — no API keys, no map library.</p>
+							<div class="project-tags">
+								<span class="tag">JavaScript</span>
+								<span class="tag">Web Mercator</span>
+								<span class="tag">OpenStreetMap</span>
+							</div>
+							<div class="project-links">
+								<a class="project-link project-link-primary" href="apps/neighborhood-map/index.html">Run app →</a>
+								<a class="project-link" href="https://github.com/japsolum/Project-Neighborhood-Map" target="_blank" rel="noopener">Source</a>
+							</div>
+						</div>
+					</article>
 
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators">
-				    	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				    	<li data-target="#myCarousel" data-slide-to="1"></li>
-				    	<li data-target="#myCarousel" data-slide-to="2"></li>
-				    	<li data-target="#myCarousel" data-slide-to="3"></li>
-				  	</ol>
+					<article class="project-card">
+						<a class="project-thumb" href="apps/cat-clicker/index.html">
+							<img src="images/catClicker.jpg" alt="Screenshot of the Cat Clicker app, showing a cat image gallery with a click counter." loading="lazy" width="640" height="430">
+						</a>
+						<div class="project-body">
+							<h3><a href="apps/cat-clicker/index.html">Cat Clicker</a></h3>
+							<p>A gallery app that tracks a click count per cat and levels each one up as it climbs. Originally a Knockout.js MVVM exercise, since rewritten dependency-free.</p>
+							<div class="project-tags">
+								<span class="tag">JavaScript</span>
+								<span class="tag">MVVM</span>
+							</div>
+							<div class="project-links">
+								<a class="project-link project-link-primary" href="apps/cat-clicker/index.html">Run app →</a>
+								<a class="project-link" href="https://github.com/japsolum/Knockout-Cat-Clicker" target="_blank" rel="noopener">Source</a>
+							</div>
+						</div>
+					</article>
 
-				  	<div class="carousel-inner">
-				    	<div class="item active">
-				      		<a href = "C:/Users/JapSo/github/Memory-Game/index.html" target = "_blank"><img src="images/memoryGame.jpg" alt="Memory Game">
-				    		<div class="carousel-caption">
-        						<h3 class="outline">Memory Game</h3>
-        						<p class="outline">https://github.com/japsolum/Memory-Game</p>
-      						</div></a>
-				    	</div>
+					<article class="project-card">
+						<a class="project-thumb" href="apps/memory-game/index.html">
+							<img src="images/memoryGame.jpg" alt="Screenshot of the Memory Game app, showing a grid of face-down playing cards." loading="lazy" width="640" height="511">
+						</a>
+						<div class="project-body">
+							<h3><a href="apps/memory-game/index.html">Memory Game</a></h3>
+							<p>A card-flipping memory game with move counting, a star rating, and a timer — built in vanilla JavaScript with no framework dependencies.</p>
+							<div class="project-tags">
+								<span class="tag">JavaScript</span>
+								<span class="tag">CSS3</span>
+							</div>
+							<div class="project-links">
+								<a class="project-link project-link-primary" href="apps/memory-game/index.html">Run app →</a>
+								<a class="project-link" href="https://github.com/japsolum/Memory-Game" target="_blank" rel="noopener">Source</a>
+							</div>
+						</div>
+					</article>
 
-				    	<div class="item">
-				      		<a href = "C:/Users/JapSo/github/Knockout-Cat-Clicker/index.html" target = "_blank"><img src="images/catClicker.jpg" alt="Cat Clicker">
-				    		<div class="carousel-caption">
-        						<h3 class="outline">Cat Clicker</h3>
-        						<p class="outline">https://github.com/japsolum/Knockout-Cat-Clicker</p>
-      						</div></a>
-				    	</div>
+					<article class="project-card">
+						<a class="project-thumb" href="apps/arcade-game/index.html">
+							<img src="images/arcadgeGame.jpg" alt="Screenshot of the Classic Arcade Game, showing a player character on a grid of grass and stone tiles avoiding bug enemies." loading="lazy" width="599" height="511">
+						</a>
+						<div class="project-body">
+							<h3><a href="apps/arcade-game/index.html">Classic Arcade Game</a></h3>
+							<p>A Frogger-style arcade game with sprite-based rendering, collision detection, and a canvas game loop, built in vanilla JavaScript.</p>
+							<div class="project-tags">
+								<span class="tag">JavaScript</span>
+								<span class="tag">Canvas</span>
+							</div>
+							<div class="project-links">
+								<a class="project-link project-link-primary" href="apps/arcade-game/index.html">Run app →</a>
+								<a class="project-link" href="https://github.com/japsolum/Arcade-Game" target="_blank" rel="noopener">Source</a>
+							</div>
+						</div>
+					</article>
 
-				    	<div class="item">
-				      		<a href = "C:/Users/JapSo/github/Project-Neighborhood-Map/index.html" target = "_blank"><img src="images/neighborhoodMap.jpg" alt="Neighborhood Map">
-				    		<div class="carousel-caption">
-        						<h3 class="outline">Neighborhood Map</h3>
-        						<p class="outline">https://github.com/japsolum/Project-Neighborhood-Map</p>
-      						</div></a>
-				    	</div>
-
-				    	<div class="item">
-				      		<a href = "C:/Users/JapSo/github/Arcade-Game/index.html" target = "_blank"><img src="images/arcadgeGame.jpg" alt="Arcade Game">
-				    		<div class="carousel-caption">
-        						<h3 class="outline">Classic Arcade Game</h3>
-        						<p class="outline">https://github.com/japsolum/Arcade-Game</p>
-      						</div>
-				    	</div></a>
-				  	</div>
-
-				  	<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				    	<span class="glyphicon glyphicon-chevron-left"></span>
-				    	<span class="sr-only">Previous</span>
-				  	</a>
-				  	<a class="right carousel-control" href="#myCarousel" data-slide="next">
-				    	<span class="glyphicon glyphicon-chevron-right"></span>
-				    	<span class="sr-only">Next</span>
-				  	</a>
 				</div>
 
-			<div class = "col-md-1"></div>
+				<p class="more-projects">More on GitHub: <a href="https://github.com/japsolum?tab=repositories" target="_blank" rel="noopener">japsolum's repositories →</a></p>
+			</div>
+		</section>
+
+		<section class="section section-alt" id="about">
+			<div class="wrap about-grid">
+				<div>
+					<h2 class="section-title">About</h2>
+					<p>Art and problem-solving were always the two subjects I cared about most — and nothing blends them quite like building for the web. I came to development after a career in a different field, retraining through project-based coursework to get hands-on with front-end fundamentals: DOM manipulation, responsive layout, and JavaScript-driven UI.</p>
+					<p>These days I'm focused on writing cleaner code, learning modern tooling, and building interfaces that are as functional as they are considered. This site itself is a work in progress — new projects get added as I finish them.</p>
+				</div>
+				<div class="about-facts">
+					<div class="fact">
+						<span class="fact-label">Focus</span>
+						<span class="fact-value">Front-end UI &amp; interaction</span>
+					</div>
+					<div class="fact">
+						<span class="fact-label">Tools</span>
+						<span class="fact-value">JavaScript, HTML5, CSS3</span>
+					</div>
+					<div class="fact">
+						<span class="fact-label">Based in</span>
+						<span class="fact-value">Colorado, USA</span>
+					</div>
+					<a class="resume-cta" href="apps/resume/index.html">
+						<span>View my resume</span>
+						<span aria-hidden="true">↗</span>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="contact">
+			<div class="wrap">
+				<h2 class="section-title">Contact</h2>
+				<p class="section-lede">Have a project in mind or just want to talk shop? Reach out.</p>
+
+				<ul class="contact-grid">
+					<li class="contact-card">
+						<a href="mailto:japsolum@hotmail.com?subject=Hello%20from%20your%20portfolio">
+							<span class="contact-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18v12H3z" stroke-linejoin="round"/><path d="m3 7 9 6 9-6" stroke-linejoin="round"/></svg>
+							</span>
+							<span class="contact-text">
+								<span class="contact-label">Email</span>
+								<span class="contact-value">japsolum@hotmail.com</span>
+							</span>
+						</a>
+					</li>
+					<li class="contact-card">
+						<a href="https://www.linkedin.com/in/james-solum-113545149/" target="_blank" rel="noopener">
+							<span class="contact-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4.5a1.5 1.5 0 0 1 3 0V17m0-4.5a1.5 1.5 0 0 1 3 0V17"/></svg>
+							</span>
+							<span class="contact-text">
+								<span class="contact-label">LinkedIn</span>
+								<span class="contact-value">james-solum</span>
+							</span>
+						</a>
+					</li>
+					<li class="contact-card">
+						<a href="https://github.com/japsolum" target="_blank" rel="noopener">
+							<span class="contact-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+							</span>
+							<span class="contact-text">
+								<span class="contact-label">GitHub</span>
+								<span class="contact-value">japsolum</span>
+							</span>
+						</a>
+					</li>
+					<li class="contact-card">
+						<a href="https://www.facebook.com/james.solum.3" target="_blank" rel="noopener">
+							<span class="contact-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke-linejoin="round"/></svg>
+							</span>
+							<span class="contact-text">
+								<span class="contact-label">Facebook</span>
+								<span class="contact-value">james.solum.3</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap footer-inner">
+			<p>&copy; <span id="year">2026</span> James Solum. Built with HTML, CSS, and JavaScript — <a href="https://github.com/japsolum/portfolio" target="_blank" rel="noopener">source on GitHub</a>.</p>
+			<a class="back-to-top" href="#top">Back to top ↑</a>
 		</div>
-		
-	</div>
+	</footer>
 
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src = "scripts/script.js"></script>
-	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+	<script src="js/script.js"></script>
 </body>
-
 </html>

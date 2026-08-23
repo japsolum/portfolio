@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cat Clicker</title>
+	<meta name="description" content="A gallery app that tracks per-cat click counts and levels them up. Built in vanilla JavaScript by James Solum.">
+	<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../_shared/backbar.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Cat Clicker</h1>
+			<hr>
+		</div>
+
+		<div class="layout">
+			<ul class="navItems" id="catList" aria-label="Choose a cat"></ul>
+
+			<div class="imgContainer">
+				<h2 class="name" id="catName"></h2>
+				<hr>
+				<button type="button" class="imageButton" id="catButton">
+					<img class="image" id="catImage" src="" alt="">
+				</button>
+				<hr>
+				<div class="scientific">
+					<span class="boldUnderline">Scientific Name:</span>
+					<span id="catScientific"></span>
+				</div>
+				<div class="level">
+					<span class="boldUnderline">Level:</span>
+					<span id="catLevel"></span>
+				</div>
+				<div>
+					<span class="boldUnderline">Clicks:</span>
+					<span id="catClicks"></span>
+				</div>
+				<p class="hint">Click the picture to level your cat up.</p>
+			</div>
+		</div>
+	</div>
+
+	<script src="../_shared/backbar.js" data-app-title="Cat Clicker" data-source="https://github.com/japsolum/Knockout-Cat-Clicker"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>

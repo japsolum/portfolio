@@ -1,0 +1,189 @@
+.page{
+  box-shadow: 5px 5px 8px grey;
+  margin: 0 auto;
+  background-color: #0e85a9;
+  align-self: center;
+  border-radius: 10px;
+  height: 650px;
+  max-width: 650px;
+}
+.header{
+  position:relative;
+  text-align: center;
+}
+.mainHeader{
+  text-shadow: 2px 2px 3px darkslategrey;
+  color: black;
+  border-radius: 10px;
+  height: 5%;
+  max-height: 150px;
+}
+.stats{
+  display: inline-block;
+  font-weight: bold;
+  height: 100%;
+  width: 32%;
+}
+
+.star {
+  height: 15px;
+  width: 15px;
+}
+
+.gameBoard{
+  box-shadow: 5px 5px 8px grey;
+  padding: 10px;
+  background-color: black;
+  background-size: cover;
+  border-radius: 10px;
+  height: 90%;
+  max-height: 600px;
+}
+.row{
+  margin: 0 auto;
+  margin-top: 10px;
+  display:flex;
+  border-radius: 10px;
+  width: 90%;
+  height: 18%;
+}
+.resetRow{
+  margin-top: 30px;
+  text-align: center;
+  height: 18%;
+}
+.card{
+  margin: 10px;
+  padding: 5px;
+  margin: 5px auto;
+  width: calc((100% - 100px) / 4);
+  height: calc(100% - 10px);
+  border-radius: 10px;
+}
+
+.blueCard {
+  background-color: #9ff;
+  box-shadow: inset -3px -3px 4px 1px #296767;
+}
+
+.blueCard:hover {
+  box-shadow: inset 3px 3px 4px 1px #296767;
+  cursor: pointer;
+}
+
+.whiteCard {
+  background-color: white;
+  box-shadow: inset 3px 3px 4px 1px lightslategrey;
+}
+
+.redCard {
+  background-color: red;
+  box-shadow: inset 3px 3px 4px 1px #6f0303;  
+}
+
+.reset {
+   height: 65px;
+   width: 150px;
+   background-color: #0e85a9;
+   box-shadow: inset -3px -3px 4px 1px #023544;
+   font-size: 40px;
+   font-weight: bold;
+   padding-top: 10px;
+   margin: auto;
+   border-radius: 10px;
+}
+
+.reset:hover {
+  box-shadow: inset 3px 3px 4px 1px #023544;
+  cursor: pointer;
+}
+
+
+/* ---- Added: body chrome, button normalization, win overlay ---- */
+body {
+  margin: 0;
+  padding: 24px 16px 40px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  color: #eef2f5;
+  background: #0b0f14 url("images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.page {
+  height: auto;
+  padding-bottom: 20px;
+}
+
+.gameBoard { height: auto; }
+
+.row { height: 120px; }
+
+.resetRow { margin-top: 24px; height: auto; }
+
+/* .reset became a real <button>; strip UA styling so it still looks the same */
+.reset {
+  display: block;
+  border: none;
+  color: black;
+  font-family: inherit;
+  line-height: 1;
+  height: 60px;
+}
+
+.card { display: block; object-fit: contain; }
+
+/* Win overlay replaces the old blocking window.confirm() */
+.winOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(3, 8, 12, 0.78);
+}
+
+.winPanel {
+  background: #151c24;
+  border: 1px solid #26313d;
+  border-radius: 14px;
+  padding: 32px;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6);
+}
+
+.winPanel h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  color: #22b8d8;
+}
+
+.winPanel p {
+  margin: 0 0 24px;
+  color: #a7b2bd;
+  line-height: 1.6;
+}
+
+.winButton {
+  background: #22b8d8;
+  color: #04141a;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+.winButton:hover { background: #eef2f5; }
+
+@media (max-width: 560px) {
+  .row { height: 78px; }
+  .mainHeader { font-size: 22px; }
+  .stats { font-size: 13px; }
+  .reset { height: 48px; width: 120px; font-size: 26px; }
+}

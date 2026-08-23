@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Classic Arcade Game</title>
+	<meta name="description" content="A Frogger-style canvas arcade game with sprite rendering and collision detection. Built in vanilla JavaScript by James Solum.">
+	<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../_shared/backbar.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="header">Classic Arcade Game</h1>
+		<div class="wins">You have won <span id="noOfWins" class="wins">0</span> <span class="wins">times without being eaten alive by giant ladybugs!</span></div>
+
+		<p class="howto">Grab the key, then reach the water. Use the <strong>arrow keys</strong> — or the buttons below on touch screens.</p>
+
+		<div class="canvasHost"></div>
+
+		<div class="touchPad" id="touchPad" aria-label="Movement controls">
+			<button type="button" class="padBtn padUp" data-dir="up" aria-label="Move up">▲</button>
+			<div class="padRow">
+				<button type="button" class="padBtn" data-dir="left" aria-label="Move left">◀</button>
+				<button type="button" class="padBtn" data-dir="down" aria-label="Move down">▼</button>
+				<button type="button" class="padBtn" data-dir="right" aria-label="Move right">▶</button>
+			</div>
+		</div>
+
+		<script src="js/resources.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/engine.js"></script>
+		<script src="js/touch.js"></script>
+	</div>
+
+	<script src="../_shared/backbar.js" data-app-title="Classic Arcade Game" data-source="https://github.com/japsolum/Arcade-Game"></script>
+</body>
+
+</html>

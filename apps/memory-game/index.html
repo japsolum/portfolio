@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Memory Game</title>
+	<meta name="description" content="A card-flipping memory game with move counting, a star rating, and a timer. Built in vanilla JavaScript by James Solum.">
+	<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../_shared/backbar.css">
+</head>
+
+<body>
+	<div class="page">
+		<div class="header">
+			<h1 class="mainHeader">Memory Game</h1>
+			<div class="subHeader">
+				<div class="stats" id="noOfStars">
+					<img class="star" src="images/solid_star.svg" id="star1" alt="Star 1">
+					<img class="star" src="images/solid_star.svg" id="star2" alt="Star 2">
+					<img class="star" src="images/solid_star.svg" id="star3" alt="Star 3">
+				</div>
+				<div class="stats" id="noOfMoves">0 Moves</div>
+				<div class="stats" id="timer">
+					<label id="minutes">00</label>:<label id="seconds">00</label>
+				</div>
+			</div>
+		</div>
+		<div class="gameBoard" id="gameBoard"></div>
+	</div>
+
+	<script src="../_shared/backbar.js" data-app-title="Memory Game" data-source="https://github.com/japsolum/Memory-Game"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>

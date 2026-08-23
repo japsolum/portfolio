@@ -1,0 +1,95 @@
+body {
+    text-align: center;
+}
+
+.container {
+	border: solid black 1px;
+	box-shadow: 5px 5px 9px grey;
+	background-color: black;
+	width: 50%;
+	min-width: 525px;
+	padding: 20px;
+	margin: auto;
+}
+
+.header {
+	margin-top: 0px;
+	padding-top: 2px;
+	color: white;
+	text-shadow: 4px 4px 6px green;
+}
+
+ .wins {
+ 	color: white;
+ }
+
+ #noOfWins {
+ 	color: red;
+ }
+ 
+
+/* ---- Added: responsive canvas, instructions, touch controls ---- */
+body {
+    margin: 0;
+    padding: 20px 12px 40px;
+    background: #0b0f14;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 560px;
+    min-width: 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.howto {
+    color: #a7b2bd;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 14px auto 10px;
+    max-width: 460px;
+}
+.howto strong { color: #eef2f5; }
+
+.canvasHost { line-height: 0; }
+
+.canvasHost canvas {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+.touchPad {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.padRow { display: flex; gap: 8px; }
+
+.padBtn {
+    width: 62px;
+    height: 52px;
+    background: #1b232d;
+    color: #22b8d8;
+    border: 1px solid #26313d;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    font-family: inherit;
+    touch-action: manipulation;
+    user-select: none;
+}
+.padBtn:hover { background: #26313d; color: #eef2f5; }
+.padBtn:active { background: #22b8d8; color: #04141a; }
+
+@media (max-width: 560px) {
+    .container { padding: 14px; }
+    .header { font-size: 22px; }
+    .wins { font-size: 14px; }
+}

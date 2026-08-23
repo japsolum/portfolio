@@ -1,0 +1,52 @@
+/* Shared "back to portfolio" bar injected into each hosted app.
+   Namespaced so it never collides with the host app's own styles. */
+.jsp-backbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 2147483000;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	height: 44px;
+	padding: 0 16px;
+	background: rgba(11, 15, 20, 0.92);
+	backdrop-filter: blur(8px);
+	border-bottom: 1px solid #26313d;
+	font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+	font-size: 14px;
+	box-sizing: border-box;
+}
+
+.jsp-backbar a.jsp-backbar-home {
+	color: #22b8d8;
+	text-decoration: none;
+	font-weight: 600;
+	white-space: nowrap;
+}
+.jsp-backbar a.jsp-backbar-home:hover { color: #eef2f5; }
+
+.jsp-backbar .jsp-backbar-title {
+	color: #a7b2bd;
+	font-weight: 500;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.jsp-backbar .jsp-backbar-src {
+	margin-left: auto;
+	color: #a7b2bd;
+	text-decoration: none;
+	font-weight: 500;
+	white-space: nowrap;
+}
+.jsp-backbar .jsp-backbar-src:hover { color: #22b8d8; }
+
+/* Push the app's own content down so the bar never covers it. */
+body { padding-top: 44px !important; }
+
+@media (max-width: 520px) {
+	.jsp-backbar .jsp-backbar-title { display: none; }
+}

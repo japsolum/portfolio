@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Neighborhood Map</title>
+	<meta name="description" content="An interactive, filterable map of places around Castle Rock, Colorado. Built in vanilla JavaScript by James Solum — no API keys required.">
+	<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="../_shared/backbar.css">
+</head>
+
+<body>
+	<div class="app">
+		<header class="appBar">
+			<button type="button" class="navToggle" id="navToggle" aria-expanded="false" aria-controls="sidebar">
+				<span class="srOnly">Toggle list</span>&#9776;
+			</button>
+			<h1 class="appTitle">Neighborhood Map</h1>
+		</header>
+
+		<div class="appBody">
+			<aside class="sidebar" id="sidebar">
+				<label class="filterLabel" for="filterBox">Filter by type</label>
+				<select id="filterBox"></select>
+
+				<p class="resultCount" id="resultCount" aria-live="polite"></p>
+
+				<ul class="placeList" id="placeList"></ul>
+			</aside>
+
+			<div class="mapWrap">
+				<div class="map" id="map" role="application" aria-label="Map of nearby places">
+					<div class="mapTiles" id="mapTiles" aria-hidden="true"></div>
+					<div class="mapGrid" id="mapGrid" aria-hidden="true"></div>
+					<div class="markerLayer" id="markerLayer"></div>
+				</div>
+
+				<div class="mapControls">
+					<button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+					<button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+					<button type="button" id="resetView" aria-label="Reset view">Reset</button>
+				</div>
+
+				<div class="mapNote" id="mapNote"></div>
+
+				<div class="infoPanel" id="infoPanel" hidden>
+					<button type="button" class="infoClose" id="infoClose" aria-label="Close">×</button>
+					<h2 id="infoName"></h2>
+					<p class="infoType" id="infoType"></p>
+					<dl class="infoMeta">
+						<dt>Coordinates</dt>
+						<dd id="infoCoords"></dd>
+						<dt>Distance from town center</dt>
+						<dd id="infoDistance"></dd>
+					</dl>
+					<a class="infoLink" id="infoDirections" href="#" target="_blank" rel="noopener">Open in OpenStreetMap ↗</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../_shared/backbar.js" data-app-title="Neighborhood Map" data-source="https://github.com/japsolum/Project-Neighborhood-Map"></script>
+	<script src="scripts/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+/* Cat Clicker — self-contained styles (Bootstrap grid replaced with flexbox). */
+
+body {
+	margin: 0;
+	padding: 24px 16px 48px;
+	background: #0b0f14;
+	font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+	color: #111;
+}
+
+hr { border: none; border-top: 1px solid rgba(0,0,0,0.35); margin: 14px 0; }
+
+.container {
+	background-color: #777675;
+	margin: auto;
+	padding: 20px;
+	max-width: 900px;
+	border: solid 2px black;
+	text-align: center;
+	border-radius: 10px;
+	box-sizing: border-box;
+}
+
+.header {
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.header h1 { margin: 6px 0 0; font-size: 32px; }
+
+/* Layout: sidebar list + detail panel (was col-xs-3 / col-xs-9) */
+.layout {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+	text-align: left;
+}
+
+.navItems {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	flex: 0 0 25%;
+	min-width: 0;
+}
+.navItems li { margin: 0 0 10px; }
+
+.navButton {
+	display: block;
+	width: 100%;
+	background-color: #cecbc7;
+	border-radius: 25px;
+	border: solid 1px black;
+	padding: 9px 10px;
+	box-shadow: 2px 2px 3px black;
+	font-family: inherit;
+	font-size: 15px;
+	font-weight: 600;
+	color: #111;
+	cursor: pointer;
+	transition: background-color 0.15s ease;
+}
+.navButton:hover { background-color: white; }
+.navButton.isActive {
+	background-color: #fff;
+	box-shadow: inset 2px 2px 4px rgba(0,0,0,0.45);
+}
+
+.imgContainer {
+	flex: 1 1 auto;
+	min-width: 0;
+	box-shadow: 3px 3px 5px black;
+	border: solid 1px black;
+	background-color: #cecbc7;
+	border-radius: 15px;
+	padding: 16px;
+	text-align: center;
+}
+
+.imgContainer h2 { margin: 4px 0; font-size: 24px; }
+
+/* The picture is the click target — make it a real button for keyboard users */
+.imageButton {
+	display: inline-block;
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+	line-height: 0;
+}
+
+.image {
+	box-shadow: 3px 3px 5px black;
+	max-width: 400px;
+	max-height: 300px;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.boldUnderline { font-weight: bold; text-decoration: underline; }
+
+.scientific { margin: 16px 0 8px; font-style: italic; }
+.level, .imgContainer > div { margin-bottom: 6px; }
+
+.hint {
+	margin: 16px 0 4px;
+	font-size: 13px;
+	color: #4a4a4a;
+}
+
+@media screen and (max-width: 640px) {
+	.layout { flex-direction: column; }
+	.navItems {
+		flex: 1 1 auto;
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		justify-content: center;
+	}
+	.navItems li { margin: 0; }
+	.navButton { padding: 7px 14px; width: auto; }
+	.imgContainer { width: 100%; box-sizing: border-box; }
+	.image { max-width: 100%; max-height: 220px; }
+}
