@@ -1,6 +1,4 @@
-/* Resume — self-contained styles, matched to the portfolio theme.
-   (The original pulled backgrounds from a YouTube thumbnail and a Google
-   image-search redirect URL, neither of which resolves to an image.) */
+/* Resume — self-contained styles, matched to the portfolio theme. */
 
 * { box-sizing: border-box; }
 
@@ -167,6 +165,17 @@ body {
 
 .entry p { margin: 0; color: #a7b2bd; font-size: 15px; }
 
+.entryLinks {
+	margin-top: 6px !important;
+	font-size: 13px !important;
+}
+.entryLinks a {
+	color: #22b8d8;
+	text-decoration: none;
+	font-weight: 600;
+}
+.entryLinks a:hover { text-decoration: underline; }
+
 /* ---- Responsive ---- */
 @media (max-width: 800px) {
 	.sheet { grid-template-columns: 1fr; }
@@ -191,7 +200,7 @@ body {
 	.sidePanel { background: #f4f6f8; border-right: 1px solid #ccc; }
 	.identity h1, .entryName, .contactValue, .contactValue a { color: #111; }
 	.block > p, .entry p, .contactLabel, .entryDate { color: #444; }
-	.subHeader, .panelHeading, .entryTitle, #profession { color: #0a7c93; }
+	.subHeader, .panelHeading, .entryTitle, #profession, .entryLinks a { color: #0a7c93; }
 	.avatar { background: #0a7c93; color: #fff; }
 	.skillList li { color: #0a7c93; border-color: #9ad; background: #eef6f9; }
 	.block { page-break-inside: avoid; }
