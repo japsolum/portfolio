@@ -104,7 +104,7 @@ function renderMessages(docs) {
 
 		const badge = document.createElement("span");
 		badge.className = "message__avatar";
-		if (data.photoURL) {
+		if (data.photoURL && /^https:\/\//i.test(data.photoURL)) {
 			const img = document.createElement("img");
 			img.src = data.photoURL;
 			img.alt = "";
@@ -198,7 +198,9 @@ async function postMessage(text) {
 	await fs.addDoc(fs.collection(db, "guestbook"), {
 		uid: currentUser.uid,
 		name: currentUser.displayName || currentUser.email.split("@")[0],
-		photoURL: currentUser.photoURL || null,
+		photoURL: (currentUser.photoURL && /^https:\/\//i.test(currentUser.photoURL))
+			? currentUser.photoURL
+			: null,
 		text: text,
 		createdAt: fs.serverTimestamp()
 	});
@@ -228,7 +230,7 @@ function showSignedIn(user) {
 	el.who.textContent = label;
 
 	el.avatar.textContent = "";
-	if (user.photoURL) {
+	if (user.photoURL && /^https:\/\//i.test(user.photoURL)) {
 		const img = document.createElement("img");
 		img.src = user.photoURL;
 		img.alt = "";
