@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Guest Book — James Solum</title>
+	<meta name="description" content="Sign the guest book on James Solum's portfolio — leave a note, say hello, or pass on some feedback.">
+	<meta name="theme-color" content="#0b0f14">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Guest Book — James Solum">
+	<meta property="og:description" content="Leave a note on James Solum's portfolio.">
+	<meta property="og:image" content="images/og-image.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+	<link rel="canonical" href="https://japsolum.github.io/portfolio/guestbook.html">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/guestbook.css">
+</head>
+<body>
+
+	<a class="skip-link" href="#main">Skip to main content</a>
+
+	<header class="site-header">
+		<div class="wrap header-inner">
+			<a class="brand" href="index.html">JS<span class="brand-dot">.</span></a>
+
+			<nav class="nav" aria-label="Primary">
+				<button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">
+					<span class="sr-only">Menu</span>
+					<span class="nav-toggle-bar"></span>
+				</button>
+				<ul class="nav-list" id="navList">
+					<li><a href="index.html#projects">Projects</a></li>
+					<li><a href="apps/resume/index.html">Resume</a></li>
+					<li><a href="index.html#about">About</a></li>
+					<li><a href="guestbook.html" aria-current="page">Guest Book</a></li>
+					<li><a class="nav-cta" href="https://github.com/japsolum" target="_blank" rel="noopener">GitHub</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main id="main">
+		<section class="section gb-section">
+			<div class="wrap gb-wrap">
+
+				<h1 class="section-title">Guest Book</h1>
+				<p class="section-lede">Stopped by, poked around, played a game? Leave a note. Sign in first so I know messages are coming from real people rather than bots.</p>
+
+				<!-- Shown only until Firebase is configured -->
+				<div class="gb-setup" id="setupNotice" hidden>
+					<h2>Not connected yet</h2>
+					<p>The guest book needs its Firebase project details before it can store messages. Add them to <code>js/firebase-config.js</code> — the steps are in <code>FIREBASE-SETUP.md</code>.</p>
+				</div>
+
+				<div class="gb-auth" id="authPanel">
+
+					<div id="signedOut">
+						<h2 class="gb-auth__title">Sign in to post</h2>
+
+						<button type="button" class="gb-google" id="googleBtn">
+							<svg viewBox="0 0 18 18" aria-hidden="true" class="gb-google__icon">
+								<path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.91c1.7-1.57 2.69-3.88 2.69-6.62z"/>
+								<path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.91-2.26c-.81.54-1.84.86-3.05.86-2.35 0-4.33-1.58-5.04-3.71H.96v2.33A9 9 0 0 0 9 18z"/>
+								<path fill="#FBBC05" d="M3.96 10.71a5.41 5.41 0 0 1 0-3.42V4.96H.96a9 9 0 0 0 0 8.08l3-2.33z"/>
+								<path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.59C13.46.89 11.43 0 9 0A9 9 0 0 0 .96 4.96l3 2.33C4.67 5.16 6.65 3.58 9 3.58z"/>
+							</svg>
+							Continue with Google
+						</button>
+
+						<div class="gb-or"><span>or</span></div>
+
+						<form class="gb-emailform" id="emailForm">
+							<label class="sr-only" for="emailInput">Email address</label>
+							<input type="email" id="emailInput" name="email" placeholder="you@example.com" autocomplete="email" required>
+							<button type="submit" class="btn btn-ghost">Email me a link</button>
+						</form>
+						<p class="gb-hint">No password — you'll get a one-time sign-in link.</p>
+
+						<p class="status" id="authStatus" hidden></p>
+					</div>
+
+					<div class="gb-signedin" id="signedIn" hidden>
+						<span class="gb-avatar" id="avatar"></span>
+						<span class="gb-who">Signed in as <strong id="who"></strong></span>
+						<button type="button" class="gb-signout" id="signOutBtn">Sign out</button>
+					</div>
+				</div>
+
+				<form class="gb-form" id="messageForm" hidden>
+					<label class="sr-only" for="messageText">Your message</label>
+					<textarea id="messageText" name="message" rows="4" maxlength="500" placeholder="Say hello…"></textarea>
+					<div class="gb-form__foot">
+						<span class="gb-count" id="charCount">0 / 500</span>
+						<button type="submit" class="btn btn-primary" id="postBtn" disabled>Post message</button>
+					</div>
+					<p class="status" id="formStatus" hidden></p>
+				</form>
+
+				<div class="gb-listhead">
+					<h2 class="gb-listtitle">Messages</h2>
+					<span class="gb-total" id="messageCount"></span>
+				</div>
+
+				<p class="gb-state" id="loadingState">Loading messages…</p>
+				<p class="gb-state" id="emptyState" hidden>No messages yet — be the first to sign it.</p>
+
+				<ul class="gb-list" id="messageList"></ul>
+
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap footer-inner">
+			<p>&copy; <span id="year">2026</span> James Solum. Built with HTML, CSS, and JavaScript — <a href="https://github.com/japsolum/portfolio" target="_blank" rel="noopener">source on GitHub</a>.</p>
+			<a class="back-to-top" href="#top">Back to top ↑</a>
+		</div>
+	</footer>
+
+	<script src="js/script.js"></script>
+	<script type="module" src="js/guestbook.js"></script>
+</body>
+</html>
