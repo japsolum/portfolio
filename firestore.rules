@@ -1,0 +1,72 @@
+rules_version = '2';
+
+/* ---------------------------------------------------------------------------
+ * Firestore security rules for the portfolio guest book.
+ *
+ * These run on Google's servers, not in the browser, so they hold even if
+ * someone bypasses the site entirely and calls the API directly. This — not
+ * the config keys in js/firebase-config.js — is what actually protects data.
+ *
+ * Paste into: Firebase console -> Firestore Database -> Rules -> Publish.
+ * ownerUid() below is already set to James's uid.
+ * ------------------------------------------------------------------------ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Your uid — lets you delete anyone's message as the site owner.
+    function ownerUid() {
+      return 'Mkoaglf88TQkVYnq9pDgQBwiyzl1';
+    }
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner() {
+      return signedIn() && request.auth.uid == ownerUid();
+    }
+
+    match /guestbook/{messageId} {
+
+      // Anyone may read the guest book, signed in or not.
+      allow read: if true;
+
+      allow create: if signedIn()
+        // You may only post as yourself.
+        && request.resource.data.uid == request.auth.uid
+
+        // Exactly these fields, nothing smuggled in alongside.
+        && request.resource.data.keys().hasOnly(
+             ['uid', 'name', 'photoURL', 'text', 'createdAt'])
+
+        // Real, sensibly sized message text.
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0
+        && request.resource.data.text.size() <= 500
+
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 80
+
+        && (request.resource.data.photoURL == null
+            || request.resource.data.photoURL is string)
+
+        // Timestamp must be the server's own clock, not a client-supplied one,
+        // so nobody can backdate or pin a message to the top of the list.
+        && request.resource.data.createdAt == request.time;
+
+      // Messages are immutable once posted — no silent edits after the fact.
+      allow update: if false;
+
+      // Authors can remove their own message; the owner can remove any.
+      allow delete: if isOwner()
+        || (signedIn() && resource.data.uid == request.auth.uid);
+    }
+
+    // Anything not matched above is denied.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
