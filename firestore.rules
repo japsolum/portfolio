@@ -50,7 +50,9 @@ service cloud.firestore {
         && request.resource.data.name.size() <= 80
 
         && (request.resource.data.photoURL == null
-            || request.resource.data.photoURL is string)
+            || (request.resource.data.photoURL is string
+                && request.resource.data.photoURL.size() <= 500
+                && request.resource.data.photoURL.matches('^https://.*')))
 
         // Timestamp must be the server's own clock, not a client-supplied one,
         // so nobody can backdate or pin a message to the top of the list.
