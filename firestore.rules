@@ -122,6 +122,74 @@ service cloud.firestore {
       allow update, delete: if isOwner();
     }
 
+
+    /* ---------------------------------------------------------------------
+     * Shared click counter — counters/cat-clicker
+     *
+     * Open to write like the leaderboards, and for the same reason: the
+     * clicker has no login. Writes arrive as increment() operations, so
+     * rules see the RESULT and compare it against what was already there.
+     * Every counter must move up, never down, and never by an absurd jump.
+     *
+     * Batching means one write can legitimately carry a hundred clicks, so
+     * the cap is set with headroom rather than at 1.
+     * ------------------------------------------------------------------- */
+
+    match /counters/cat-clicker {
+
+      function cats() {
+        return ['tiger', 'leopard', 'cheetah', 'panther', 'lynx'];
+      }
+
+      function maxJump() { return 250; }
+
+      // Reads the old value of a counter, treating "absent" as zero so the
+      // very first click doesn't fail on null arithmetic.
+      function was(field) {
+        return resource == null ? 0 : resource.data.get(field, 0);
+      }
+
+      function now(field) {
+        return request.resource.data.get(field, 0);
+      }
+
+      function counterOk(field) {
+        return now(field) is int
+          && now(field) >= was(field)
+          && now(field) - was(field) <= maxJump();
+      }
+
+      function everyCatOk() {
+        return counterOk('tiger')
+          && counterOk('leopard')
+          && counterOk('cheetah')
+          && counterOk('panther')
+          && counterOk('lynx');
+      }
+
+      function catDeltaSum() {
+        return (now('tiger') - was('tiger'))
+          + (now('leopard') - was('leopard'))
+          + (now('cheetah') - was('cheetah'))
+          + (now('panther') - was('panther'))
+          + (now('lynx') - was('lynx'));
+      }
+
+      allow read: if true;
+
+      allow create, update: if
+        request.resource.data.keys().hasOnly(cats().concat(['total', 'updatedAt']))
+        && counterOk('total')
+        && everyCatOk()
+        // Grand total must match the sum of per-cat increments — no
+        // inflating the headline number without a matching cat click.
+        && (now('total') - was('total')) == catDeltaSum()
+        && catDeltaSum() >= 1
+        && request.resource.data.updatedAt == request.time;
+
+      allow delete: if isOwner();
+    }
+
     // Anything not matched above is denied.
     match /{document=**} {
       allow read, write: if false;
