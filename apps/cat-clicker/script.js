@@ -88,8 +88,14 @@
 	}
 
 	el.button.addEventListener("click", function () {
-		cats[currentIndex].clickCount += 1;
+		var cat = cats[currentIndex];
+		cat.clickCount += 1;
 		renderCat();
+
+		// Feed the shared worldwide tally (globalcount.js), if it loaded.
+		if (typeof window.onCatClick === "function") {
+			window.onCatClick(cat.name);
+		}
 	});
 
 	renderList();
