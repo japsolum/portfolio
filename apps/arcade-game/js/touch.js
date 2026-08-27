@@ -7,6 +7,7 @@
 	if (!pad || typeof player === "undefined") return;
 
 	function move(dir) {
+		if (window.__hsModalOpen) return;
 		if (dir) player.handleInput(dir);
 	}
 

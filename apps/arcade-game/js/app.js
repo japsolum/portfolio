@@ -131,12 +131,19 @@ function detectCollision() {
         var touchK = (player.location.x === goldKey.location.x) && (player.location.y === goldKey.location.y);
 
         if (touchE) {
+            var endedStreak = winCounter;
             winCounter = 0;
             gotKey = false;
             goldKey.reappear();
             document.getElementById("noOfWins").innerHTML = winCounter;
             player.location.x = pStartLocX;
             player.location.y = pStartLocY;
+
+            // A run is over the moment a bug catches you. Hand the streak
+            // that just ended to the leaderboard (highscores.js).
+            if (endedStreak > 0 && typeof window.onArcadeStreakEnd === "function") {
+                window.onArcadeStreakEnd(endedStreak);
+            }
         }
 
         if (touchK) {
@@ -160,6 +167,9 @@ function win() {
 // This listens for key presses and sends the keys to the
 // Player.handleInput() method. 
 document.addEventListener('keyup', function(e) {
+    // Ignore movement while the high-score prompt is open.
+    if (window.__hsModalOpen) return;
+
     var allowedKeys = {
         37: 'left',
         38: 'up',
