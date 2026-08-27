@@ -16,6 +16,7 @@ body {
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 290px 1fr;
+	grid-template-areas: "side main";
 	gap: 0;
 	background: #10161d;
 	border: 1px solid #26313d;
@@ -26,9 +27,12 @@ body {
 
 /* ---- Side panel ---- */
 .sidePanel {
+	grid-area: side;
 	background: #151c24;
 	border-right: 1px solid #26313d;
 	padding: 32px 24px;
+	display: flex;
+	flex-direction: column;
 }
 
 .avatar {
@@ -46,7 +50,7 @@ body {
 	letter-spacing: 0.02em;
 }
 
-.identity { text-align: center; margin-bottom: 28px; }
+.identity { text-align: center; margin-bottom: 8px; }
 
 .identity h1 {
 	margin: 0 0 4px;
@@ -74,7 +78,10 @@ body {
 
 .contactList, .skillList { list-style: none; margin: 0 0 28px; padding: 0; }
 
+.contactList { margin-bottom: 0; }
+
 .contactList li { margin-bottom: 12px; }
+.contactList li:last-child { margin-bottom: 0; }
 
 .contactLabel {
 	display: block;
@@ -92,7 +99,12 @@ body {
 .contactValue a { color: #eef2f5; text-decoration: none; }
 .contactValue a:hover { color: #22b8d8; }
 
-.skillList { display: flex; flex-wrap: wrap; gap: 7px; }
+.skillList {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+	margin: 0 0 22px;
+}
 .skillList li {
 	font-size: 12px;
 	font-weight: 600;
@@ -103,8 +115,14 @@ body {
 	border-radius: 999px;
 }
 
+.contactMe {
+	margin-top: auto;
+	padding-top: 28px;
+}
+
 .printButton {
 	width: 100%;
+	margin-top: 24px;
 	background: none;
 	color: #eef2f5;
 	border: 1px solid #26313d;
@@ -119,7 +137,10 @@ body {
 .printButton:hover { border-color: #22b8d8; color: #22b8d8; }
 
 /* ---- Main column ---- */
-.resume { padding: 36px 34px; }
+.resume {
+	grid-area: main;
+	padding: 36px 34px;
+}
 
 .block { margin-bottom: 34px; }
 .block:last-child { margin-bottom: 0; }
@@ -178,9 +199,45 @@ body {
 
 /* ---- Responsive ---- */
 @media (max-width: 800px) {
-	.sheet { grid-template-columns: 1fr; }
-	.sidePanel { border-right: none; border-bottom: 1px solid #26313d; }
-	.resume { padding: 28px 22px; }
+	.sheet {
+		display: flex;
+		flex-direction: column;
+		grid-template-columns: 1fr;
+	}
+	.sidePanel {
+		border-right: none;
+		display: contents;
+	}
+	.identity {
+		order: 0;
+		padding: 28px 22px 8px;
+		background: #151c24;
+		text-align: center;
+		margin: 0;
+	}
+	.resume {
+		order: 1;
+		padding: 28px 22px;
+	}
+	.contactMe {
+		order: 2;
+		margin-top: 0;
+		padding: 20px 22px 8px;
+		background: #151c24;
+		border-top: 1px solid #26313d;
+	}
+	.printButton {
+		order: 3;
+		margin: 0;
+		padding: 16px 22px 28px;
+		border: none;
+		border-radius: 0;
+		background: #151c24;
+		text-align: center;
+	}
+	.printButton:hover {
+		background: #1b232d;
+	}
 }
 
 /* ---- Print ---- */
@@ -196,8 +253,15 @@ body {
 		max-width: none;
 		background: #fff;
 		grid-template-columns: 250px 1fr;
+		grid-template-areas: "side main";
 	}
-	.sidePanel { background: #f4f6f8; border-right: 1px solid #ccc; }
+	.sidePanel {
+		display: flex;
+		background: #f4f6f8;
+		border-right: 1px solid #ccc;
+		border-top: none;
+	}
+	.identity, .contactMe { background: transparent; padding: 0; }
 	.identity h1, .entryName, .contactValue, .contactValue a { color: #111; }
 	.block > p, .entry p, .contactLabel, .entryDate { color: #444; }
 	.subHeader, .panelHeading, .entryTitle, #profession, .entryLinks a { color: #0a7c93; }
