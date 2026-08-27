@@ -187,3 +187,10 @@ body {
   .stats { font-size: 13px; }
   .reset { height: 48px; width: 120px; font-size: 26px; }
 }
+
+.winSaved {
+  margin: 14px 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4ac07a;
+}

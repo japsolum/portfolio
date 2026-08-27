@@ -186,10 +186,28 @@
 
 		panel.appendChild(h);
 		panel.appendChild(p);
+
+		// The high-score module drops its initials form in here, above the
+		// Play again button, if this run made the top five.
+		var scoreSlot = document.createElement("div");
+		scoreSlot.className = "winScoreSlot";
+		panel.appendChild(scoreSlot);
+
 		panel.appendChild(again);
 		overlay.appendChild(panel);
 		document.body.appendChild(overlay);
 		again.focus();
+
+		// Hand the result to whoever is listening (highscores.js).
+		if (typeof window.onMemoryGameWin === "function") {
+			window.onMemoryGameWin({
+				moves: state.moves,
+				seconds: state.elapsed,
+				displayTime: state.displayTime,
+				slot: scoreSlot,
+				focusFallback: again
+			});
+		}
 	}
 
 	function buildBoard() {
