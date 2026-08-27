@@ -197,7 +197,10 @@ img { max-width: 100%; display: block; }
 		overflow: hidden;
 		transition: max-height 0.25s ease;
 	}
-	.nav-list.is-open { max-height: 320px; }
+	.nav-list.is-open {
+		max-height: min(80vh, 720px);
+		padding-bottom: 8px;
+	}
 	.nav-list li { border-top: 1px solid var(--border); }
 	.nav-list a { display: block; padding: 16px 24px; }
 	.nav-cta { border: none; border-radius: 0; padding: 16px 24px; }
