@@ -1,0 +1,205 @@
+/* Shared high-score board and initials prompt.
+   Namespaced hs* so it never collides with a game's own styles. */
+
+.hs {
+	max-width: 460px;
+	margin: 28px auto 0;
+	background: #10161d;
+	border: 1px solid #26313d;
+	border-radius: 12px;
+	padding: 18px 20px 20px;
+	font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+	text-align: left;
+	box-sizing: border-box;
+}
+
+.hs__head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 10px;
+	flex-wrap: wrap;
+	border-bottom: 1px solid #26313d;
+	padding-bottom: 10px;
+	margin-bottom: 12px;
+}
+
+.hs__title {
+	margin: 0;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: #22b8d8;
+}
+
+.hs__rule { font-size: 12px; color: #a7b2bd; }
+
+.hs__state { margin: 6px 0; color: #a7b2bd; font-size: 14px; }
+
+.hs__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	counter-reset: none;
+}
+
+.hs__row {
+	display: grid;
+	grid-template-columns: 26px 58px 1fr;
+	align-items: center;
+	gap: 10px;
+	padding: 9px 8px;
+	border-radius: 8px;
+	font-variant-numeric: tabular-nums;
+}
+.hs__row + .hs__row { margin-top: 2px; }
+.hs__row:nth-child(odd) { background: rgba(255, 255, 255, 0.025); }
+
+.hs__row.isNew {
+	background: rgba(34, 184, 216, 0.14);
+	box-shadow: inset 0 0 0 1px rgba(34, 184, 216, 0.4);
+}
+
+.hs__rank { color: #a7b2bd; font-size: 13px; }
+
+.hs__initials {
+	font-family: "Space Grotesk", ui-monospace, "SFMono-Regular", Menlo, monospace;
+	font-weight: 700;
+	font-size: 17px;
+	letter-spacing: 0.16em;
+	color: #eef2f5;
+}
+
+.hs__score { color: #a7b2bd; font-size: 14px; text-align: right; }
+
+/* ---- Initials prompt ---- */
+
+.hsAsk {
+	margin-top: 18px;
+	padding-top: 18px;
+	border-top: 1px solid #26313d;
+	text-align: center;
+}
+
+.hsAsk__title {
+	margin: 0 0 14px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #22b8d8;
+}
+
+.hsAsk__form { display: flex; flex-direction: column; align-items: center; }
+
+.hsAsk__label {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: #a7b2bd;
+	margin-bottom: 8px;
+}
+
+.hsAsk__input {
+	width: 150px;
+	background: #0b0f14;
+	border: 1px solid #26313d;
+	border-radius: 10px;
+	padding: 12px 0;
+	text-align: center;
+	font-family: "Space Grotesk", ui-monospace, "SFMono-Regular", Menlo, monospace;
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: 0.3em;
+	text-indent: 0.3em;
+	color: #eef2f5;
+	text-transform: uppercase;
+}
+.hsAsk__input:focus {
+	outline: 2px solid #22b8d8;
+	outline-offset: 2px;
+	border-color: transparent;
+}
+.hsAsk__input::placeholder { color: #38434f; }
+
+.hsAsk__hint {
+	margin: 9px 0 0;
+	font-size: 12px;
+	color: #a7b2bd;
+	min-height: 1em;
+}
+.hsAsk__hint.isError { color: #ff8080; }
+
+.hsAsk__actions {
+	display: flex;
+	gap: 10px;
+	margin-top: 14px;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.hsAsk__save, .hsAsk__skip {
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	border-radius: 999px;
+	padding: 10px 22px;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+
+.hsAsk__save { background: #22b8d8; color: #04141a; }
+.hsAsk__save:hover:not(:disabled) { background: #eef2f5; }
+.hsAsk__save:disabled { opacity: 0.45; cursor: default; }
+
+.hsAsk__skip { background: none; border-color: #26313d; color: #a7b2bd; }
+.hsAsk__skip:hover:not(:disabled) { border-color: #22b8d8; color: #22b8d8; }
+.hsAsk__skip:disabled { opacity: 0.45; cursor: default; }
+
+/* ---- Overlay used by games with no win screen of their own ---- */
+
+.hsOverlay {
+	position: fixed;
+	inset: 0;
+	z-index: 2147483100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background: rgba(3, 8, 12, 0.8);
+}
+
+.hsOverlay__panel {
+	background: #151c24;
+	border: 1px solid #26313d;
+	border-radius: 14px;
+	padding: 28px;
+	width: 100%;
+	max-width: 400px;
+	text-align: center;
+	box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.65);
+	font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+	color: #eef2f5;
+}
+
+.hsOverlay__panel h2 { margin: 0 0 6px; font-size: 24px; color: #22b8d8; }
+.hsOverlay__panel p.hsOverlay__sub { margin: 0; color: #a7b2bd; font-size: 15px; }
+.hsOverlay__panel .hsAsk { border-top: none; margin-top: 4px; }
+
+.hsOverlay__close {
+	margin-top: 4px;
+	background: none;
+	border: 1px solid #26313d;
+	border-radius: 999px;
+	color: #a7b2bd;
+	padding: 10px 22px;
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.hsOverlay__close:hover { border-color: #22b8d8; color: #22b8d8; }
+
+@media (max-width: 520px) {
+	.hs { margin-top: 22px; padding: 16px; }
+	.hs__row { grid-template-columns: 22px 52px 1fr; gap: 8px; }
+}
